@@ -1,0 +1,509 @@
+<html><head><base href="http://localhost:3000" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FitLife Gym</title>
+<style>
+:root {
+  --primary: #ff4d4d;
+  --secondary: #333;
+  --light: #f4f4f4;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background: var(--light);
+}
+
+.navbar {
+  background: white;
+  padding: 1rem 5%;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.navbar-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--secondary);
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: var(--primary);
+}
+
+.hero {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 0 5%;
+  background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+              url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48') center/cover;
+  color: white;
+}
+
+.hero-content {
+  max-width: 600px;
+}
+
+.hero h1 {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.cta-btn {
+  padding: 1rem 2rem;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.cta-btn:hover {
+  transform: translateY(-3px);
+}
+
+.features {
+  padding: 5rem 5%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.feature-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  text-align: center;
+  transition: transform 0.3s;
+}
+
+.feature-card:hover {
+  transform: translateY(-10px);
+}
+
+.feature-icon {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 1rem;
+}
+
+.feature-card h3 {
+  margin-bottom: 1rem;
+  color: var(--secondary);
+}
+
+.feature-card p {
+  color: #666;
+}
+
+.membership-plans {
+  padding: 5rem 5%;
+  background: white;
+}
+
+.plan-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.plan-card {
+  padding: 2rem;
+  border-radius: 10px;
+  border: 2px solid #eee;
+  text-align: center;
+  transition: all 0.3s;
+}
+
+.plan-card:hover {
+  border-color: var(--primary);
+  transform: scale(1.02);
+}
+
+.price {
+  font-size: 2.5rem;
+  color: var(--primary);
+  margin: 1rem 0;
+}
+
+.price span {
+  font-size: 1rem;
+  color: #666;
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+  }
+  
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+}
+
+.testimonials {
+  padding: 5rem 5%;
+  background: var(--light);
+}
+
+.testimonial-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.testimonial-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.testimonial-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.testimonial-avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1rem;
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.testimonial-info h4 {
+  color: var(--secondary);
+}
+
+.testimonial-info p {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.footer {
+  background: var(--secondary);
+  color: white;
+  padding: 4rem 5% 2rem;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.footer-section h3 {
+  margin-bottom: 1.5rem;
+  color: var(--primary);
+}
+
+.footer-section p, .footer-section a {
+  color: #ccc;
+  text-decoration: none;
+  line-height: 1.8;
+}
+
+.footer-section a:hover {
+  color: var(--primary);
+}
+
+.social-links {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.social-links svg {
+  width: 24px;
+  height: 24px;
+  fill: #ccc;
+  transition: fill 0.3s;
+}
+
+.social-links svg:hover {
+  fill: var(--primary);
+}
+
+.copyright {
+  text-align: center;
+  padding-top: 2rem;
+  border-top: 1px solid #444;
+  color: #888;
+}
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="navbar-content">
+    <div class="logo">FitLife</div>
+    <div class="nav-links">
+      <a href="https://example.com/home">Home</a>
+      <a href="https://example.com/classes">Classes</a>
+      <a href="https://example.com/membership">Membership</a>
+      <a href="https://example.com/trainers">Trainers</a>
+      <a href="https://example.com/contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-content">
+    <h1>Transform Your Life</h1>
+    <p>Join FitLife gym and start your fitness journey today. Get access to world-class equipment, expert trainers, and a supportive community.</p>
+    <button class="cta-btn">Start Free Trial</button>
+  </div>
+</section>
+
+<section class="features">
+  <div class="feature-card">
+    <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2">
+      <path d="M20 7a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7z"/>
+      <path d="M12 7v10M7 12h10"/>
+    </svg>
+    <h3>Modern Equipment</h3>
+    <p>Access to the latest fitness equipment and technology to help you achieve your goals.</p>
+  </div>
+  
+  <div class="feature-card">
+    <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2">
+      <circle cx="12" cy="12" r="10"/>
+      <path d="M12 6v6l4 2"/>
+    </svg>
+    <h3>Flexible Hours</h3>
+    <p>Open 24/7 to fit your schedule. Work out whenever it's convenient for you.</p>
+  </div>
+  
+  <div class="feature-card">
+    <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2">
+      <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+      <circle cx="9" cy="7" r="4"/>
+      <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 1 1 0 7.75"/>
+    </svg>
+    <h3>Expert Trainers</h3>
+    <p>Get guidance from certified fitness professionals who care about your success.</p>
+  </div>
+</section>
+
+<section class="membership-plans">
+  <h2 style="text-align: center; margin-bottom: 2rem;">Membership Plans</h2>
+  <div class="plan-cards">
+    <div class="plan-card">
+      <h3>Basic</h3>
+      <div class="price">$29<span>/month</span></div>
+      <ul style="list-style: none; margin-bottom: 2rem;">
+        <li>Access to Gym Floor</li>
+        <li>Basic Equipment</li>
+        <li>Locker Room Access</li>
+      </ul>
+      <button class="cta-btn">Choose Plan</button>
+    </div>
+    
+    <div class="plan-card">
+      <h3>Premium</h3>
+      <div class="price">$49<span>/month</span></div>
+      <ul style="list-style: none; margin-bottom: 2rem;">
+        <li>All Basic Features</li>
+        <li>Group Classes</li>
+        <li>Fitness Assessment</li>
+        <li>Personal Training Session</li>
+      </ul>
+      <button class="cta-btn">Choose Plan</button>
+    </div>
+    
+    <div class="plan-card">
+      <h3>Elite</h3>
+      <div class="price">$79<span>/month</span></div>
+      <ul style="list-style: none; margin-bottom: 2rem;">
+        <li>All Premium Features</li>
+        <li>Unlimited Classes</li>
+        <li>Nutrition Consultation</li>
+        <li>Monthly Progress Review</li>
+        <li>Recovery Zone Access</li>
+      </ul>
+      <button class="cta-btn">Choose Plan</button>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials">
+  <h2 style="text-align: center; margin-bottom: 2rem;">What Our Members Say</h2>
+  <div class="testimonial-grid">
+    <div class="testimonial-card">
+      <div class="testimonial-header">
+        <div class="testimonial-avatar">JD</div>
+        <div class="testimonial-info">
+          <h4>John Doe</h4>
+          <p>Member since 2022</p>
+        </div>
+      </div>
+      <p>"FitLife has completely transformed my approach to fitness. The trainers are exceptional and the community is so supportive!"</p>
+    </div>
+    
+    <div class="testimonial-card">
+      <div class="testimonial-header">
+        <div class="testimonial-avatar">SM</div>
+        <div class="testimonial-info">
+          <h4>Sarah Mitchell</h4>
+          <p>Member since 2021</p>
+        </div>
+      </div>
+      <p>"The 24/7 access and modern equipment make it easy to maintain my fitness routine. Best gym I've ever been a member of!"</p>
+    </div>
+    
+    <div class="testimonial-card">
+      <div class="testimonial-header">
+        <div class="testimonial-avatar">RK</div>
+        <div class="testimonial-info">
+          <h4>Robert King</h4>
+          <p>Member since 2023</p>
+        </div>
+      </div>
+      <p>"From day one, the staff has been incredibly helpful. The variety of classes and equipment keeps me motivated and engaged."</p>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-section">
+      <h3>FitLife Gym</h3>
+      <p>Transform your life with our world-class facilities and expert guidance. Join our fitness community today!</p>
+      <div class="social-links">
+        <a href="https://facebook.com/fitlife"><svg viewBox="0 0 24 24"><path d="M18.77,7.46H14.5v-1.9c0-.9.6-1.1,1-1.1h3V.5L14.17.5C10.24.5,9.1,3.3,9.1,5.47V7.47H6.21v4h3v12h5.29V11.47h3.47Z"/></svg></a>
+        <a href="https://twitter.com/fitlife"><svg viewBox="0 0 24 24"><path d="M23.44,4.83c-.8.37-1.5.38-2.22.02.93-.56.98-.96,1.32-2.02-.88.52-1.86.9-2.9,1.1-.82-.88-2-1.43-3.3-1.43-2.5,0-4.55,2.04-4.55,4.54,0,.36.03.7.1,1.04-3.77-.2-7.12-2-9.36-4.75-.4.67-.6,1.45-.6,2.3,0,1.56.8,2.95,2,3.77-.74-.03-1.44-.23-2.05-.58v.06c0,2.2,1.56,4.03,3.64,4.44-.67.2-1.37.2-2.06.08.58,1.8,2.26,3.12,4.25,3.16C5.78,18.1,3.37,18.74,1,18.46c2,1.3,4.4,2.04,6.97,2.04,8.35,0,12.92-6.92,12.92-12.93,0-.2,0-.4-.02-.6.9-.63,1.96-1.22,2.56-2.14Z"/></svg></a>
+        <a href="https://instagram.com/fitlife"><svg viewBox="0 0 24 24"><path d="M12,2.16c3.2,0,3.58,0,4.85.07,3.25.15,4.77,1.69,4.92,4.92.06,1.27.07,1.65.07,4.85,0,3.2,0,3.58-.07,4.85-.15,3.23-1.69,4.77-4.92,4.92-1.27.06-1.65.07-4.85.07-3.2,0-3.58,0-4.85-.07-3.26-.15-4.77-1.7-4.92-4.92-.06-1.27-.07-1.65-.07-4.85,0-3.2,0-3.58.07-4.85C2.38,3.92,3.92,2.38,7.15,2.23,8.42,2.18,8.8,2.16,12,2.16ZM12,0C8.74,0,8.33,0,7.05.07c-4.35.2-6.78,2.62-7,7C0,8.33,0,8.74,0,12s0,3.67.07,4.95c.2,4.36,2.62,6.78,7,7C8.33,24,8.74,24,12,24s3.67,0,4.95-.07c4.35-.2,6.78-2.62,7-7C24,15.67,24,15.26,24,12s0-3.67-.07-4.95c-.2-4.35-2.62-6.78-7-7C15.67,0,15.26,0,12,0Zm0,5.84A6.16,6.16,0,1,0,18.16,12,6.16,6.16,0,0,0,12,5.84ZM12,16a4,4,0,1,1,4-4A4,4,0,0,1,12,16ZM18.41,4.15a1.44,1.44,0,1,0,1.44,1.44A1.44,1.44,0,0,0,18.41,4.15Z"/></svg></a>
+      </div>
+    </div>
+    
+    <div class="footer-section">
+      <h3>Quick Links</h3>
+      <p><a href="https://example.com/about">About Us</a></p>
+      <p><a href="https://example.com/classes">Class Schedule</a></p>
+      <p><a href="https://example.com/trainers">Our Trainers</a></p>
+      <p><a href="https://example.com/membership">Membership Plans</a></p>
+    </div>
+    
+    <div class="footer-section">
+      <h3>Contact Us</h3>
+      <p>123 Fitness Street</p>
+      <p>New York, NY 10001</p>
+      <p>Phone: (555) 123-4567</p>
+      <p>Email: info@fitlife.com</p>
+    </div>
+    
+    <div class="footer-section">
+      <h3>Hours</h3>
+      <p>Monday - Friday: 24/7</p>
+      <p>Saturday: 24/7</p>
+      <p>Sunday: 24/7</p>
+    </div>
+  </div>
+  
+  <div class="copyright">
+    <p> 2023 FitLife Gym. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+        });
+    });
+});
+
+window.addEventListener('scroll', function() {
+    if (window.scrollY > 50) {
+        document.querySelector('.navbar').style.backgroundColor = 'rgba(255,255,255,0.95)';
+    } else {
+        document.querySelector('.navbar').style.backgroundColor = 'white';
+    }
+});
+
+const features = document.querySelectorAll('.feature-card');
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+        }
+    });
+}, { threshold: 0.1 });
+
+features.forEach(feature => {
+    feature.style.opacity = '0';
+    feature.style.transform = 'translateY(20px)';
+    feature.style.transition = 'all 0.6s ease-out';
+    observer.observe(feature);
+});
+
+const testimonials = document.querySelectorAll('.testimonial-card');
+const testimonialObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+        }
+    });
+}, { threshold: 0.1 });
+
+testimonials.forEach(testimonial => {
+    testimonial.style.opacity = '0';
+    testimonial.style.transform = 'translateY(20px)';
+    testimonial.style.transition = 'all 0.6s ease-out';
+    testimonialObserver.observe(testimonial);
+});
+</script>
+
+</body>
+</html>
